@@ -3,10 +3,6 @@ import AllocationRow from './AllocationRow.js';
 
 class AllocationTable extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
 roundUp(num, precision) {
   precision = Math.pow(10, precision)
   return Math.ceil(num * precision) / precision
@@ -17,12 +13,17 @@ roundUp(num, precision) {
 
   var amt_spent = 0;
 
+  const roundUp = window.roundUp;
+  const commaSeparateNumber = window.commaSeparateNumber;
+
   /* TO DO: figure out a way to use the reduce operation to do this nicely! */
 
   this.props.entries.forEach((x) => { amt_spent += Number(x.amt)});
   var amt_remaining = this.props.amt_to_spend - amt_spent;
 
-  amt_spent = this.roundUp(amt_spent, 2);
+  amt_remaining = commaSeparateNumber(amt_remaining);
+  amt_spent = roundUp(amt_spent, 2);
+  amt_spent = commaSeparateNumber(amt_spent);
 
 
   this.props.entries.forEach((x) => { })

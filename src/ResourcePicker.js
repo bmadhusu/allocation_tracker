@@ -5,8 +5,9 @@ class ResourcePicker extends Component {
 
   constructor() {
     super();
+    const peeps = window.peeps;
     this.state = {
-    	peeps: {'Wendy': 200, 'Madhu': 100, 'Veeru': 80}
+    	peeps: peeps
     };
   }
 
@@ -76,7 +77,6 @@ class ResourcePicker extends Component {
   			<datalist ref="resources" id="resources">
   			{Object.keys(this.state.peeps).map((name) =>{
   				return(
-  					
   					<option value={name} />
   					)
   			}

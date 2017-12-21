@@ -5,10 +5,6 @@ import AllocationTable from './AllocationTable.js';
 
 var peeps = {'Wendy': 200, 'Madhu': 100, 'Veeru': 80}
 
-function roundUp(num, precision) {
-  precision = Math.pow(10, precision)
-  return Math.ceil(num * precision) / precision
-}
 
 class App extends Component {
 
@@ -21,10 +17,10 @@ class App extends Component {
     };
   }
 
- roundUp(num, precision) {
-  precision = Math.pow(10, precision)
-  return Math.ceil(num * precision) / precision
-}
+//  roundUp(num, precision) {
+//   precision = Math.pow(10, precision)
+//   return Math.ceil(num * precision) / precision
+// }
 
 addEntry(s) {
 
@@ -58,8 +54,10 @@ handleAmtToSpend(s) {
 
     var rounded_totals = this.state.totals;
 
+    const roundUp = window.roundUp;
+
     for (var j = 0; j < rounded_totals.length; j++)
-      rounded_totals[j] = this.roundUp(rounded_totals[j],2);
+      rounded_totals[j] = roundUp(rounded_totals[j],2);
 
     return (
       <div className="App">

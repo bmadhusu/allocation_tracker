@@ -3,18 +3,13 @@ import React, { Component } from 'react';
 
 class AllocationRow extends Component {
 
-  constructor() {
-    super();
-  }
-
-roundUp(num, precision) {
-  precision = Math.pow(10, precision)
-  return Math.ceil(num * precision) / precision
-}
-
   render() {
   	console.log(this.props.entry);
-  	var days_per_month = this.roundUp(this.props.entry.amt / this.props.entry.rate / 12, 2);
+
+  	const roundUp = window.roundUp;
+	const commaSeparateNumber = window.commaSeparateNumber;
+	var days_per_month = roundUp(this.props.entry.amt / this.props.entry.rate / 12, 2);
+	var entry_amt = commaSeparateNumber(this.props.entry.amt);
 
   	return(
   		<tr>
@@ -34,7 +29,7 @@ roundUp(num, precision) {
   		<td>{days_per_month}</td>
   		<td>{days_per_month}</td>
   		<td>{days_per_month}</td>
-  		<td>{this.props.entry.amt}</td>
+  		<td>{entry_amt}</td>
   		</tr>
   		);
 
