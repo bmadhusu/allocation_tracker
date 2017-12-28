@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import ResourcePicker from './ResourcePicker.js';
 import AllocationTable from './AllocationTable.js';
+var helpers2 = require('./helpers2.js')
+var peeps = helpers2.peeps2;
 
-var peeps = {'Wendy': 200, 'Madhu': 100, 'Veeru': 80}
-
+const roundUp = window.roundUp;
 
 class App extends Component {
 
@@ -27,15 +28,19 @@ addEntry(s) {
   var entries = this.state.entries;
       
   s["rate"] = peeps[s["name"]];
-  entries.push( s );
 
   var totals = this.state.totals;
 
   // Calculate column totals
 
-  for (var j=0; j<12;j++) {
-      totals[j] += s["amt"] / s["rate"] / 12;
+  s["monthly_allocations"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+  for (var j=s["start_month"]; j<s["end_month"]+1;j++) {
+      totals[j] += s["amt"] / s["rate"] / (s["end_month"] - s["start_month"]+1);
+      s["monthly_allocations"][j] = roundUp(s["amt"] / s["rate"] / (s["end_month"] - s["start_month"]+1),2);
   }
+
+  entries.push( s );
 
   this.setState( {entries: entries, totals: totals} );
 }
@@ -53,8 +58,6 @@ handleAmtToSpend(s) {
   render() {
 
     var rounded_totals = this.state.totals;
-
-    const roundUp = window.roundUp;
 
     for (var j = 0; j < rounded_totals.length; j++)
       rounded_totals[j] = roundUp(rounded_totals[j],2);

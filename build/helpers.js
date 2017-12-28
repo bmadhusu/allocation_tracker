@@ -10,5 +10,4 @@ function commaSeparateNumber(val){
     return val;
   }
 
-  
-var peeps = {'Wendy': 200, 'Madhu': 100, 'Veeru': 80};
+var peeps = {'Wendy': 200, 'Madhu': 100, 'Veeru': 80, 'A, Aruna': 52.3};

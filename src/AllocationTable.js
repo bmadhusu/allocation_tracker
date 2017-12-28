@@ -12,6 +12,7 @@ roundUp(num, precision) {
   render() {
 
   var amt_spent = 0;
+  var days_spent = 0;
 
   const roundUp = window.roundUp;
   const commaSeparateNumber = window.commaSeparateNumber;
@@ -47,13 +48,13 @@ roundUp(num, precision) {
 							<th>Oct</th>
 							<th>Nov</th>
 							<th>Dec</th>
+							<th>Total PD</th>
 							<th>Total CHF</th>
 						</tr>
 					</thead>
 					<tbody>
 						{this.props.entries.map((row) => {
 							return (<AllocationRow entry={row}/>)
-
 						})}
 						<tr>
 							<td>TOTAL</td>
@@ -69,6 +70,7 @@ roundUp(num, precision) {
 							<td>{this.props.totals[9]}</td>
 							<td>{this.props.totals[10]}</td>
 							<td>{this.props.totals[11]}</td>
+							<td>N/A</td>
 							<td>{amt_spent}</td>
 						</tr>
 					</tbody>

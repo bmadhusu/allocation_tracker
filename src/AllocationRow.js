@@ -8,7 +8,8 @@ class AllocationRow extends Component {
 
   	const roundUp = window.roundUp;
 	const commaSeparateNumber = window.commaSeparateNumber;
-	var days_per_month = roundUp(this.props.entry.amt / this.props.entry.rate / 12, 2);
+	let allocs = this.props.entry.monthly_allocations;
+	var entry_days = roundUp(this.props.entry.amt / this.props.entry.rate, 2);
 	var entry_amt = commaSeparateNumber(this.props.entry.amt);
 
   	return(
@@ -17,18 +18,19 @@ class AllocationRow extends Component {
   		<td>
   			{this.props.entry.name}
   		</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
-  		<td>{days_per_month}</td>
+  		<td>{allocs[0]}</td>
+  		<td>{allocs[1]}</td>
+  		<td>{allocs[2]}</td>
+  		<td>{allocs[3]}</td>
+  		<td>{allocs[4]}</td>
+  		<td>{allocs[5]}</td>
+  		<td>{allocs[6]}</td>
+  		<td>{allocs[7]}</td>
+  		<td>{allocs[8]}</td>
+  		<td>{allocs[9]}</td>
+  		<td>{allocs[10]}</td>
+  		<td>{allocs[11]}</td>
+  		<td>{entry_days}</td>
   		<td>{entry_amt}</td>
   		</tr>
   		);
