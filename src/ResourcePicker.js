@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-var helpers2 = require('./helpers2.js')
 
 class ResourcePicker extends Component {
 
   constructor() {
     super();
-    // const peeps = window.peeps;
-        // const peeps = peeps; //window.peeps;
-
-    this.state = {
-    	peeps: helpers2.peeps2
-    };
-    
   }
 
   validateInput(val, amt, start_month, end_month) {
 
   	
-  	if (!((Object.keys(this.state.peeps)).includes(val)) ) {
+  	if (!((Object.keys(this.props.peeps)).includes(val)) ) {
   		alert("You must select a valid resource");
   		return false;
   	}
@@ -95,9 +87,9 @@ class ResourcePicker extends Component {
 
   render() {
 
-console.log("Imported: " + this.state.peeps);
+console.log("Imported: " + this.props.peeps);
   	return (
-  		<div>
+  		<div className="Top">
   			<h2>Resource Allocator</h2>
   			<p>Choose a resource and enter a positive CHF amount and click Add. The resource will be distributed evenly across the months.</p>
         <p><strong>NOTE: This is calc'ing at a 15% absence rate or 18 days/month</strong></p>
@@ -107,20 +99,22 @@ console.log("Imported: " + this.state.peeps);
 
   			<br />
   			<br />
-  			<label>Select Resource</label>
-  			<input type="text" ref="peep" list="resources"/>
+        <div>
+  			<label className="resource_select">Select Resource</label>
+  			<input className="resource_select" type="text" ref="peep" list="resources"/>
   			<datalist ref="resources" id="resources">
-  			{Object.keys(this.state.peeps).map((name) =>{
+  			{Object.keys(this.props.peeps).map((name) =>{
   				return(
   					<option value={name} />
   					)
   			}
   			)}
   			</datalist>
-        <label>Start Month:</label>
+        <label className="resource_select">Start Month:</label>
           {this.month_options("start_month")}
-        <label>End Month:</label>
+        <label className="resource_select">End Month:</label>
           {this.month_options("end_month")}
+        </div>
   			<br />
   			<br />
   			<label>Enter CHF: </label>

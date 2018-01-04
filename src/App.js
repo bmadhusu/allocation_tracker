@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import ResourcePicker from './ResourcePicker.js';
 import AllocationTable from './AllocationTable.js';
-var helpers2 = require('./helpers2.js')
-var peeps = helpers2.peeps2;
+import axios from 'axios'
+
+const url_to_fetch_data = "/files/platform_services/platform_services_rates.js";
 
 const roundUp = window.roundUp;
 
@@ -27,7 +28,7 @@ addEntry(s) {
 
   var entries = this.state.entries;
       
-  s["rate"] = peeps[s["name"]];
+  s["rate"] = this.state.peeps[s["name"]];
 
   var totals = this.state.totals;
 
@@ -55,8 +56,27 @@ handleAmtToSpend(s) {
   this.setState( { amt_to_spend: s });
 }
 
-  render() {
 
+componentDidMount() {
+    var _this = this;
+    this.serverRequest = 
+      axios
+        .get(url_to_fetch_data)
+        .then(function(result) {
+          // console.log("afer promise: " + JSON.parse(result));
+          _this.setState({
+            peeps: result.data
+          });
+        })
+        .catch(error => {
+          console.log('Error with axios: ', error);
+        })
+
+}
+
+render() {
+
+  if (this.state.peeps) {
     var rounded_totals = this.state.totals;
 
     for (var j = 0; j < rounded_totals.length; j++)
@@ -64,10 +84,17 @@ handleAmtToSpend(s) {
 
     return (
       <div className="App">
-        <ResourcePicker addEntry={this.addEntry.bind(this)} handleAmt={this.handleAmtToSpend.bind(this)} clearTable={this.clearTable.bind(this)} />
+        <ResourcePicker peeps={this.state.peeps} addEntry={this.addEntry.bind(this)} handleAmt={this.handleAmtToSpend.bind(this)} clearTable={this.clearTable.bind(this)} />
         <AllocationTable entries={this.state.entries} amt_to_spend={this.state.amt_to_spend} totals={rounded_totals} />
       </div>
     );
+  }
+
+  else {
+    return(<div>Getting data</div>);
+  }
+
+
   }
 }
 

@@ -20,6 +20,8 @@ roundUp(num, precision) {
   /* TO DO: figure out a way to use the reduce operation to do this nicely! */
 
   this.props.entries.forEach((x) => { amt_spent += Number(x.amt)});
+  this.props.entries.forEach((x) => { days_spent += Number(x.amt)/Number(x.rate)} );
+
   var amt_remaining = this.props.amt_to_spend - amt_spent;
 
   amt_remaining = commaSeparateNumber(amt_remaining);
@@ -70,7 +72,7 @@ roundUp(num, precision) {
 							<td>{this.props.totals[9]}</td>
 							<td>{this.props.totals[10]}</td>
 							<td>{this.props.totals[11]}</td>
-							<td>N/A</td>
+							<td>{days_spent}</td>
 							<td>{amt_spent}</td>
 						</tr>
 					</tbody>
