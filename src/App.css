@@ -2,26 +2,155 @@
   text-align: center;
 }*/
 
-.Top {
-  /*animation: App-logo-spin infinite 20s linear;*/
-  /*height: 80px;*/
-  /*background-color: #222;*/
+body {
+  color: rgb(109, 104, 99);
+  font-family: Arial;
+}
+
+.Right_Div {
+    font-size: 12px;
+}
+
+.Left_Div {
+    font-size: 14px;
+}
+
+.Top_Div {
+  display: inline-block;
+}
+
+.Top_Div label {
+  /*text-align: justify;*/
+  /*display: block;*/
+}
+
+.Btn {
+  font-size: 9px;
+  font-weight: bold;
+  color: rgb(68,78,143);
+  background-color: rgb(219,217,214);
+  border: 1px solid rgb(142,130,121);
+  padding: 5px;
+}
+
+input {
+  border: 1px solid rgb(140,130,121);
+  float: none;
+
+}
+
+select {
+  border: 1px solid rgb(140,130,121);
+
+}
+
+/********* Allocation Table CSS ****************/
+
+table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.totalRow {
+  color: black;
+}
+
+th {
+    text-align: center;
+    background-color: rgb(219,217,214);
+    color: rgb(109,104,99);
+    border-color: rgb(219,217,214); 
+    border: 1px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  border-bottom-color: white;
+  border-right-color: white;
+
+}
+
+.totalRow td {
+  border-bottom: 1px solid;
+}
+
+.vertical-text {
+    display: block;
+
+  width: 200px;
+    height: 50px;
+    background-color: rgb(68,78,143);
+    color: white;
+/*    text-align: center;
+    vertical-align: middle;
+    display: table-cell;*/
+  transform: rotate(90deg);
+  transform-origin: left bottom 0;
+  /*transform-origin: right bottom 0;*/
+}
+
+/*.Top {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+  background-color: #222;
+      display: inline-block;
+
     padding: 0px;
     font-size: large;
  margin: 20px;
-  /*padding: 0;*/
   font-family: sans-serif;
 
+}*/
+
+.Top {
+
+  margin-left: 120px;
 }
 
-.resource_select {
-  /*background-color: #222;*/
-  /*height: 10px;*/
-  /*padding: 20px;*/
-  margin-left: 100px;
-  margin:   10px;
-  /*color: white;*/
+.chooser {
+  margin-top:15px;
 }
+
+.chooser > div > label:first-child {
+  padding-right: 80px;
+  text-align: right;
+}
+
+.chooser input + button,
+label.resource_select {
+  margin-left: 10px;
+  /*color: red;*/
+}
+
+.chooser input {
+  margin-left: 25px;
+}
+
+.chooser > div {
+   display: table-row;
+
+}
+
+.chooser  {
+  padding-left: 5px;
+  margin-left: 5px;
+}
+
+.chooser > div > * {
+  display: table-cell;
+  padding: 10px;
+}
+
+#AddResource {
+  padding: 5px;
+  margin-left: 10px;
+  display: inline;
+}
+
 
 .App-title {
   font-size: 1.5em;

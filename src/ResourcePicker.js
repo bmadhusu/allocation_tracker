@@ -90,41 +90,50 @@ class ResourcePicker extends Component {
 console.log("Imported: " + this.props.peeps);
   	return (
   		<div className="Top">
-  			<h2>Resource Allocator</h2>
-  			<p>Choose a resource and enter a positive CHF amount and click Add. The resource will be distributed evenly across the months.</p>
-        <p><strong>NOTE: This is calc'ing at a 15% absence rate or 18 days/month</strong></p>
-  			<label>Enter Target CHF to spend: </label>
-  			<input type="text" ref="target_amt" />
-  			<button type="button" name="Set" onClick={this.handleAmtToSpend.bind(this)}>Set</button>
+        <div className="chooser">
+          <div>
+             <label>Enter split to allocate and Click Set</label>
+                <label>Enter Target CHF to spend: </label>
+                <div>
+                  <input type="text" ref="target_amt" />
+                  <button className="Btn" type="button" name="Set" onClick={this.handleAmtToSpend.bind(this)}>SET</button>
+                </div>
+          </div>
+         <div>
+                <label>Choose a resource</label>
+                <label>Select Resource</label>
+                <div>
+                  <input className="resource_select" type="text" ref="peep" list="resources"/>
+                  <datalist ref="resources" id="resources">
+                  {Object.keys(this.props.peeps).map((name) =>{
+                    return(
+                          <option value={name} />
+                          )
+                    }
+                  )}
+                  </datalist>
+                  <label className="resource_select">Start Month:</label>
+                    {this.month_options("start_month")}
+                  <label className="resource_select">End Month:</label>
+                    {this.month_options("end_month")}
+                </div>
+          </div>
+          <div>
+            <label>Enter amount to give resource</label>
+            <label>Enter CHF: </label>
+            <div>
+               <input type="text" ref="amt"/>
+            </div>
+          </div>
 
-  			<br />
-  			<br />
-        <div>
-  			<label className="resource_select">Select Resource</label>
-  			<input className="resource_select" type="text" ref="peep" list="resources"/>
-  			<datalist ref="resources" id="resources">
-  			{Object.keys(this.props.peeps).map((name) =>{
-  				return(
-  					<option value={name} />
-  					)
-  			}
-  			)}
-  			</datalist>
-        <label className="resource_select">Start Month:</label>
-          {this.month_options("start_month")}
-        <label className="resource_select">End Month:</label>
-          {this.month_options("end_month")}
+          <div>
+            <label style={{fontWeight:"bold"}}>NOTE: This is calculating at a 15% absence rate or 18 days/month</label>
+            <button className="Btn" type="button" id="AddResource" name="Add" onClick={this.handleAddResource.bind(this)}>ADD RESOURCE</button>
+            <label style={{fontSize:"14px",color:"rgb(109,104,99)"}}>Resource distributed evenly across the months</label>
+
+          </div>
+
         </div>
-  			<br />
-  			<br />
-  			<label>Enter CHF: </label>
-  			<input type="text" ref="amt"/>
-
-  			<br />
-  			<br />
-  			<button type="button" id="AddResource" name="Add" onClick={this.handleAddResource.bind(this)}>Add Resource</button>
-  			<button type="button" id="ClearTable" name="Add" onClick={this.handleClearTable.bind(this)}>Clear Table</button>
-  			<hr/>
 
   		</div>
 

@@ -15,7 +15,7 @@ class AllocationRow extends Component {
   	return(
   		<tr>
 
-  		<td>
+  		<td style={{textAlign:"left"}}>
   			{this.props.entry.name}
   		</td>
   		<td>{allocs[0]}</td>
@@ -29,9 +29,9 @@ class AllocationRow extends Component {
   		<td>{allocs[8]}</td>
   		<td>{allocs[9]}</td>
   		<td>{allocs[10]}</td>
-  		<td>{allocs[11]}</td>
-  		<td>{entry_days}</td>
-  		<td>{entry_amt}</td>
+  		<td style={{borderRight:"1px solid"}}>{allocs[11]}</td>
+  		<td style={{borderRight:"1px solid"}}>{entry_days}</td>
+  		<td style={{borderRight:"1px solid"}}>{entry_amt}</td>
   		</tr>
   		);
 

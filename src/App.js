@@ -4,7 +4,7 @@ import ResourcePicker from './ResourcePicker.js';
 import AllocationTable from './AllocationTable.js';
 import axios from 'axios'
 
-const url_to_fetch_data = "/files/platform_services/platform_services_rates.js";
+const url_to_fetch_data = "/public/platform_services/platform_services_rates.js";
 
 const roundUp = window.roundUp;
 
@@ -84,8 +84,17 @@ render() {
 
     return (
       <div className="App">
-        <ResourcePicker peeps={this.state.peeps} addEntry={this.addEntry.bind(this)} handleAmt={this.handleAmtToSpend.bind(this)} clearTable={this.clearTable.bind(this)} />
-        <AllocationTable entries={this.state.entries} amt_to_spend={this.state.amt_to_spend} totals={rounded_totals} />
+        <div>
+          <div className="vertical-text Top_Div">
+            RESOURCE ALLOCATOR
+          </div>
+          <ResourcePicker peeps={this.state.peeps} addEntry={this.addEntry.bind(this)} handleAmt={this.handleAmtToSpend.bind(this)} clearTable={this.clearTable.bind(this)} />
+        </div>
+        <hr style={{marginTop: "80px", borderWidth:"1px",backgroundColor:"rgb(142,130,121)"}}/>
+        <button className="Btn" type="button" id="ClearTable" name="Add" onClick={this.clearTable.bind(this)}>CLEAR TABLE</button>
+        <br/>
+        <br/>
+       <AllocationTable entries={this.state.entries} amt_to_spend={this.state.amt_to_spend} totals={rounded_totals} />
       </div>
     );
   }
